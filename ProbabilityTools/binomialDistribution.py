@@ -1,3 +1,4 @@
+import math
 from math import pow
 
 from ProbabilityTools import probabilityCommon
@@ -29,12 +30,23 @@ def binDist(x: int, n: int, p: float):
     if p < 0.0 or p > 1.0:
         raise ValueError(f"Probability({p}) must be [0,1]")
 
-    print(f"Binomial distribution with {x} successes from {n} trials and a p(x) = {p}:")
+    print(f"Binomial distribution with {x} successes from {n} trials and a p(x) = {p}:\n")
 
-    pmf = probabilityCommon.choose(n, x) * pow(p, x) * pow(1.0 - p, n - x)
+    q = 1.0 - p
+
+    pmf = probabilityCommon.choose(n, x) * pow(p, x) * pow(q, n - x)
     cdf = pmf
     for i in range(0, int (x)):
-        cdf += probabilityCommon.choose(n, i) * pow(p, i) * pow(1.0 - p, n - i)
+        cdf += probabilityCommon.choose(n, i) * pow(p, i) * pow(q, n - i)
 
-    print(f"-----PMF(X={x}):\t{pmf}")
-    print(f"-----CDF(X<={x}):\t{cdf}")
+    print(f"---PMF(X={x}):\t{pmf}")
+    print(f"---CDF(X<={x}):\t{cdf}")
+    print(f"---CDF(X<{x}): \t{cdf-pmf}")
+    print(f"---CDF(X>={x}):\t{1.0-(cdf-pmf)}")
+    print(f"---CDF(X>{x}): \t{1.0-cdf}")
+    print()
+
+    print(f"---Mean:\t\t{n*p}")
+    print(f"---Variance:\t {n*p*q}")
+    print(f"---Standard Deviation:\t{math.sqrt(n*p*q)}")
+
