@@ -1,4 +1,7 @@
-from summarizeData import *
+import probability
+# from statistics import summarizeData
+# from statistics.summarizeData import *
+from probability import *
 import sys
 
 
@@ -15,7 +18,7 @@ def parseToSet(numbers: str) -> list:
             _l.append(float(val.strip()))
         return _l
     except Exception:
-        raise IOError("Set not inputted correctly")
+        raise IOError("Set not entered correctly")
 
 
 def add(numbers: list):
@@ -26,9 +29,6 @@ def add(numbers: list):
     return sum
 
 
-
-
-
 if __name__ == '__main__':
     args = sys.argv
     if len(args) > 2:
@@ -37,18 +37,27 @@ if __name__ == '__main__':
             raise IOError("Preface your command with --")
         else:
             command = command[2:]
-            numbers = parseToSet(args[2])
 
-            print("Set: " + str(numbers))
             if command == 'summarize':
-                summarize(numbers)
+                numbers = parseToSet(args[2])
+                summarizeData.summarize(numbers)
             elif command == 'mean':
+                numbers = parseToSet(args[2])
                 print("Mean: " + str(mean(numbers)))
             elif command == 'median':
+                numbers = parseToSet(args[2])
                 print("Median: " + str(median(numbers)))
             elif command == 'add':
+                numbers = parseToSet(args[2])
                 print("Sum: " + str(add(numbers)))
             elif command == 'sumsquares':
+                numbers = parseToSet(args[2])
                 print("Sum of squares: " + str(sumOfSquares(numbers)))
+            elif command == 'expectedvalue':
+                numbers = parsePMF(args[2])
+                print("Expected value: " + str(expectedValue(numbers)))
+            elif command == 'pmfvariance':
+                numbers = parsePMF(args[2])
+                print("Variance: " + str(probability.variance(numbers)))
     else:
         print("add arguments")
