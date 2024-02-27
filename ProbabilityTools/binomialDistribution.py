@@ -14,7 +14,13 @@ def validArgs(argMap: dict) -> bool:
 
 
 def showHelp():
-    print("A binomial distribution with n trials, x successes, and a probability of success p")
+    print("A binomial distribution with n trials, x successes, and a probability of success p\n")
+    print("Required arguments:")
+    print("---x: the number of successes")
+    print("---n: the number of total trials")
+    print("---p: the probability of a success, [0.0, 1.0]")
+    print()
+    print("Try running:\n\tpython probability.py -bin -x 5 -n 10 -p 0.5\n")
 
 
 def binDist(x: int, n: int, p: float):
@@ -39,14 +45,14 @@ def binDist(x: int, n: int, p: float):
     for i in range(0, int (x)):
         cdf += probabilityCommon.choose(n, i) * pow(p, i) * pow(q, n - i)
 
-    print(f"---PMF(X={x}):\t{pmf}")
-    print(f"---CDF(X<={x}):\t{cdf}")
-    print(f"---CDF(X<{x}): \t{cdf-pmf}")
-    print(f"---CDF(X>={x}):\t{1.0-(cdf-pmf)}")
-    print(f"---CDF(X>{x}): \t{1.0-cdf}")
+    print(f"---PMF(X={x}):\t\t{pmf}")
+    print(f"---CDF(X<={x}):\t\t{cdf}")
+    print(f"---CDF(X<{x}): \t\t{cdf-pmf}")
+    print(f"---CDF(X>={x}):\t\t{1.0-(cdf-pmf)}")
+    print(f"---CDF(X>{x}): \t\t{1.0-cdf}")
     print()
 
     print(f"---Mean:\t\t{n*p}")
-    print(f"---Variance:\t {n*p*q}")
+    print(f"---Variance:\t\t{n*p*q}")
     print(f"---Standard Deviation:\t{math.sqrt(n*p*q)}")
 
