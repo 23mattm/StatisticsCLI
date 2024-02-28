@@ -1,7 +1,6 @@
 # Contains mean, median
 # and tests for all functions
 import math
-from compute import add
 
 
 def summarize(sample: list):
@@ -60,27 +59,15 @@ def variance(sample: list):
     return var / (len(sample) - 1)
 
 
+def add(numbers: list):
+    result = 0
+    for number in numbers:
+        result += number
+    return result
+
+
 def sumOfSquares(numbers: list):
     sum = 0
     for num in numbers:
         sum += math.pow(num, 2)
     return sum
-
-
-def test():
-    print("Testing mean...")
-    print("Test 1: " + str(mean([1, 2, 3, 4, 5]) == 3))
-    print("Test 2: " + str(mean([1]) == 1))
-    print("Test 3: " + str(mean([5, 5, 5, 10, 5]) == 6))
-    print("Testing median...")
-    print("Test 1: " + str(median([1, 2, 3, 4, 5]) == 3))
-    print("Test 2: " + str(median([1]) == 1))
-    print("Test 3: " + str(median([5, 5, 10, 5]) == 7.5))
-    print("Testing variance...")
-    print("Test 1: " + str(variance([10, 120, 1241, 132508])))
-    print("Test 2: " + str(variance([1, 2]) == 1))
-    print("Test 3: " + str(variance([5, 5, 10, 5]) == 7.5))
-
-
-if __name__ == "__main__":
-    test()
