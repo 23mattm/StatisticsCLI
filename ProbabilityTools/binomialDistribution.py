@@ -45,12 +45,7 @@ def binDist(x: int, n: int, p: float):
     for i in range(0, int (x)):
         cdf += probabilityCommon.choose(n, i) * pow(p, i) * pow(q, n - i)
 
-    print(f"---PMF(X={x}):\t\t{pmf}")
-    print(f"---CDF(X<={x}):\t\t{cdf}")
-    print(f"---CDF(X<{x}): \t\t{cdf-pmf}")
-    print(f"---CDF(X>={x}):\t\t{1.0-(cdf-pmf)}")
-    print(f"---CDF(X>{x}): \t\t{1.0-cdf}")
-    print()
+    probabilityCommon.displayStats(x, pmf, cdf)
 
     print(f"---Mean:\t\t{n*p}")
     print(f"---Variance:\t\t{n*p*q}")

@@ -24,3 +24,13 @@ def choose(n: int, r: int) -> float:
         raise ValueError(f"Cannot choose {r} items from {n} total")
 
     return factorial(n) / (factorial(r) * factorial(n - r))
+
+
+def displayStats(x, pmf, cdf):
+    print(f"---PMF(X={x}):\t\t{pmf}")
+    print(f"---CDF(X<={x}):\t\t{cdf}")
+    print(f"---CDF(X<{x}): \t\t{cdf - pmf}")
+    print(f"---CDF(X>={x}):\t\t{1.0 - (cdf - pmf)}")
+    print(f"---CDF(X>{x}): \t\t{1.0 - cdf}")
+    print()
+

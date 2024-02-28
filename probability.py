@@ -1,5 +1,5 @@
-from ProbabilityTools import probabilityCommon
 from ProbabilityTools import binomialDistribution
+from ProbabilityTools import poisson
 import sys
 
 
@@ -7,6 +7,7 @@ def showHelp():
     print("Plase specify a probability distribution from the list below:")
     print()
     print("\t-bin\t a binomial distribution(requires -x, -n, -p).")
+    print("\t-pois\t a poisson distribution(requires -x, -u).")
 
 
 def parseArgs(arguments: list) -> dict:
@@ -63,5 +64,15 @@ if __name__ == "__main__":
                     argMap.get("n"),
                     argMap.get("p")
                 )
+    elif args[1] == "-pois":
+        if helpTag:
+            poisson.showHelp()
+        else:
+            if poisson.validArgs(argMap):
+                poisson.poisson(
+                    argMap.get("x"),
+                    argMap.get("u")
+                )
+
 
     print("------------")
