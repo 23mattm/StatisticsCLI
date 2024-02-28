@@ -4,7 +4,7 @@ import sys
 
 
 def showHelp():
-    print("Plase specify a probability distribution from the list below:")
+    print("Please specify a probability distribution from the list below:")
     print()
     print("\t-bin\t a binomial distribution(requires -x, -n, -p).")
     print("\t-pois\t a poisson distribution(requires -x, -u).")
@@ -73,6 +73,9 @@ if __name__ == "__main__":
                     argMap.get("x"),
                     argMap.get("u")
                 )
+    else:
+        print("No distribution specified.")
+        showHelp()
 
 
     print("------------")
