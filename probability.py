@@ -1,5 +1,5 @@
-from ProbabilityTools import binomialDistribution
-from ProbabilityTools import poisson
+from ProbabilityTools import (
+    binomialDistribution, poisson, normalDistribution)
 import sys
 
 
@@ -8,6 +8,7 @@ def showHelp():
     print()
     print("\t-bin\t a binomial distribution(requires -x, -n, -p).")
     print("\t-pois\t a poisson distribution(requires -x, -u).")
+    print("\t-norm\t a normal distribution(requires -x, -u, -o).")
 
 
 def parseArgs(arguments: list) -> dict:
@@ -54,7 +55,7 @@ if __name__ == "__main__":
 
     helpTag = not (argMap.get("h") is None)
 
-    if (args[1] == "-bin"):
+    if args[1] == "-bin":
         if helpTag:
             binomialDistribution.showHelp()
         else:
@@ -72,6 +73,16 @@ if __name__ == "__main__":
                 poisson.poisson(
                     argMap.get("x"),
                     argMap.get("u")
+                )
+    elif args[1] == "-norm":
+        if helpTag:
+            normalDistribution.showHelp()
+        else:
+            if normalDistribution.validArgs(argMap):
+                normalDistribution.normalDist(
+                    argMap.get("x"),
+                    argMap.get("u"),
+                    argMap.get("o")
                 )
     else:
         print("No distribution specified.")
