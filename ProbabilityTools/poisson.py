@@ -37,9 +37,4 @@ def poisson(x: int, u: float):
     for i in range(0, int(x)):
         cdf += (pow(u, i) / factorial(i)) * pow(e, -u)
 
-    displayStats(x, pmf, cdf)
-
-    print(f"---Mean:\t\t{u}")
-    print(f"---Variance:\t\t{u}")
-    print(f"---Standard Deviation:\t{sqrt(u)}")
-
+    displayStats(x, pmf, cdf, u, u)

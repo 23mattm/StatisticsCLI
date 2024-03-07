@@ -1,5 +1,5 @@
 from ProbabilityTools import (
-    binomialDistribution, poisson, normalDistribution)
+    binomialDistribution, poisson, normalDistribution, weibull)
 import sys
 
 
@@ -9,6 +9,8 @@ def showHelp():
     print("\t-bin\t a binomial distribution(requires -x, -n, -p).")
     print("\t-pois\t a poisson distribution(requires -x, -u).")
     print("\t-norm\t a normal distribution(requires -x, -u, -o).")
+    print("\t-weib\t a weibull distribution(requires -x, -a, -b).")
+
 
 
 def parseArgs(arguments: list) -> dict:
@@ -83,6 +85,16 @@ if __name__ == "__main__":
                     argMap.get("x"),
                     argMap.get("u"),
                     argMap.get("o")
+                )
+    elif args[1] == "-weib":
+        if helpTag:
+            weibull.showHelp()
+        else:
+            if weibull.validArgs(argMap):
+                weibull.weibull(
+                    argMap.get("x"),
+                    argMap.get("a"),
+                    argMap.get("b")
                 )
     else:
         print("No distribution specified.")

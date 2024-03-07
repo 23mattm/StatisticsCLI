@@ -1,4 +1,4 @@
-
+from math import sqrt
 
 def factorial(n: int) -> int:
     """
@@ -26,15 +26,15 @@ def choose(n: int, r: int) -> float:
     return factorial(n) / (factorial(r) * factorial(n - r))
 
 
-def displayStats(x, pmf, cdf, discrete=True):
+def displayStats(x, pmf, cdf, mean, var):
     print(f"---PMF(X={x}):\t\t{pmf}")
-    if discrete:
-        print(f"---CDF(X<={x}):\t\t{cdf}")
-        print(f"---CDF(X<{x}): \t\t{cdf - pmf}")
-        print(f"---CDF(X>={x}):\t\t{1.0 - (cdf - pmf)}")
-        print(f"---CDF(X>{x}): \t\t{1.0 - cdf}")
-    else:
-        print("---This distribution is continuous; continuous cdf is WIP")
-        print(f"---To find the cdf X<={x}, take the integral of the pdf from -infinity to {x}")
+
+    print(f"---CDF(X<={x}):\t\t{cdf}")
+    print(f"---CDF(X<{x}): \t\t{cdf - pmf}")
+    print(f"---CDF(X>={x}):\t\t{1.0 - (cdf - pmf)}")
+    print(f"---CDF(X>{x}): \t\t{1.0 - cdf}")
     print()
+    print(f"---Mean:\t\t{mean}")
+    print(f"---Variance:\t\t{var}")
+    print(f"---Standard Deviation:\t{sqrt(var)}")
 
