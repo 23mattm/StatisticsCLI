@@ -37,4 +37,4 @@ def poisson(x: int, u: float):
     for i in range(0, int(x)):
         cdf += (pow(u, i) / factorial(i)) * pow(e, -u)
 
-    displayStats(x, pmf, cdf, u, u)
+    displayStats(x, pmf, cdf, u, u, True)

@@ -50,5 +50,6 @@ def binDist(x: int, n: int, p: float):
         pmf,
         cdf,
         n*p,   # mean
-        n*p*q  # variance
+        n*p*q,  # variance
+        True
     )

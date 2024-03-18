@@ -33,6 +33,6 @@ def normalDist(x: float, u: float, o: float):
     pdf = (1.0 / (o * sqrt(2*pi))) * pow(e, -pow(x-u, 2)/pow(2*o, 2))
     cdf = pdf
 
-    displayStats(x, pdf, cdf, u, pow(o, 2))
+    displayStats(x, pdf, cdf, u, pow(o, 2), False)
 
 

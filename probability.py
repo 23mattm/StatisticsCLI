@@ -1,5 +1,6 @@
 from ProbabilityTools import (
-    binomialDistribution, poisson, normalDistribution, weibull)
+    binomialDistribution, poisson, normalDistribution, weibull,
+    lognormal)
 import sys
 
 
@@ -10,6 +11,8 @@ def showHelp():
     print("\t-pois\t a poisson distribution(requires -x, -u).")
     print("\t-norm\t a normal distribution(requires -x, -u, -o).")
     print("\t-weib\t a weibull distribution(requires -x, -a, -b).")
+    print("\t-lognorm\t a lognormal distribution(requires -x, -u, -o).")
+
 
 
 
@@ -95,6 +98,16 @@ if __name__ == "__main__":
                     argMap.get("x"),
                     argMap.get("a"),
                     argMap.get("b")
+                )
+    elif args[1] == "-lognorm":
+        if helpTag:
+            lognormal.showHelp()
+        else:
+            if lognormal.validArgs(argMap):
+                lognormal.lognormal(
+                    argMap.get("x"),
+                    argMap.get("u"),
+                    argMap.get("o")
                 )
     else:
         print("No distribution specified.")

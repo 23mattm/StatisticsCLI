@@ -30,20 +30,29 @@ def findcdf(x: float, alpha: float, beta: float) -> float:
     return 1 - pow(e, -pow(x/beta, alpha))
 
 
+def findmean(alpha: float, beta: float) -> float:
+    return beta * gamma(1 + (1/alpha))
+
+
+def findvar(alpha: float, beta: float) -> float:
+    return pow(beta, 2) * (gamma(1 + (2/alpha)) - pow(gamma(1+(1/alpha)), 2))
+
+
 def weibull(x: float, alpha: float, beta: float):
 
     pdf = findpdf(x, alpha, beta)
     cdf = findcdf(x, alpha, beta)
 
-    mean = beta * gamma(1 + (1/alpha))
-    variance = pow(beta, 2) * (gamma(1 + (2/alpha)) - pow(gamma(1+(1/alpha)), 2))
+    mean = findmean(alpha, beta)
+    variance = findvar(alpha, beta)
 
     displayStats(
         x,
         pdf,
         cdf,
         mean,
-        variance
+        variance,
+        False
     )
 
 
