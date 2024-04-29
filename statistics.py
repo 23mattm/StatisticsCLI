@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     numbers = list()
 
-    for num in args[1].split(","):
+    for num in args[1].split(" "):
         if num.find("."):
             num = float(num)
         else:
